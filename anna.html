@@ -1,40 +1,166 @@
-for (let i = 0; i < 30; i++) {
-        const heart = document.createElement("div");
-        heart.className = "burst";
-        heart.innerHTML = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = Math.random() * 100 + "vh";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 1200);
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Валентинка 💗</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
     }
+
+    .card {
+        background: white;
+        padding: 35px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        max-width: 360px;
+        animation: fadeIn 1.5s ease;
+        z-index: 2;
+    }
+
+    h1 {
+        color: #ff5c8a;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #444;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .buttons {
+        margin-top: 25px;
+        position: relative;
+        height: 70px;
+    }
+
+    button {
+        padding: 12px 22px;
+        border-radius: 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+        position: absolute;
+    }
+
+    #yes {
+        background: #ff5c8a;
+        color: white;
+        left: 28%;
+    }
+
+    #no {
+        background: #ddd;
+        color: #333;
+        right: 28%;
+    }
+
+    .message {
+        display: none;
+        animation: fadeIn 1s ease;
+    }
+
+    .signature {
+        margin-top: 15px;
+        font-style: italic;
+        color: #777;
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 18px;
+        pointer-events: none;
+        animation: float 6s infinite ease-in;
+        opacity: 0.8;
+    }
+
+    .burst {
+        position: absolute;
+        font-size: 22px;
+        animation: burst 1.2s ease-out forwards;
+        pointer-events: none;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(100vh); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @keyframes burst {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
+</head>
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6c3f07e1b5.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1 id="name">💗</h1>
+
+    <p id="question">
+        Хочешь быть моей валентинкой  
+        и самой любимой подругой? 🌸
+    </p>
+
+    <div class="buttons" id="buttons">
+        <button id="yes" onclick="yesClick()">ДА 💕</button>
+        <button id="no" onmouseover="moveNo()">НЕТ 😅</button>
+    </div>
+
+    <div class="message" id="message">
+        <p id="personalText"></p>
+        <div class="signature">
+            С любовью, Ира 💻💗
+        </div>
+    </div>
+</div>
+
+<script>
+// ===== ИМЕНА И ТЕКСТЫ =====
+const texts = {
+        "Аня, ты очень милая и настоящая 🤍<br><br>С тобой легко и хорошо. Спасибо за тебя 💕"
+};
+
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name") || "Ты";
+document.getElementById("name").innerText = "💗 " + name + " 💗";
+document.getElementById("personalText").innerHTML =
+    texts[name] || "Ты очень важный человек для меня 💖<br><br>Спасибо, что ты есть 🌸";
+
+// ===== КНОПКИ =====
+function yesClick() {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("buttons").style.display = "none";
+    document.getElementById("message").style.display = "block";
+    document.getElementById("music").play();
+    burstHearts();
 }
 
-for (let i = 0; i < 25; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDelay = Math.random() * 5 + "s";
-    heart.style.fontSize = (Math.random() * 20 + 14) + "px";
-    document.body.appendChild(heart);
+function moveNo() {
+    const no = document.getElementById("no");
+    no.style.left = Math.random() * 80 + "%";
+    no.style.top = Math.random() * 80 + "%";
 }
 
-// ===== PASХАЛКА: KONAMI CODE =====
-const konami = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
-let pos = 0;
-
-document.addEventListener("keydown", e => {
-    if (e.key === konami[pos]) {
-        pos++;
-        if (pos === konami.length) {
-            alert("🎮 Пасхалка найдена!\nТы настоящая легенда 💫💖");
-            pos = 0;
-        }
-    } else {
-        pos = 0;
-    }
-});
-</script>
-
-</body>
-</html>
+// ===== СЕРДЕЧКИ =====
+function burstHearts() {
