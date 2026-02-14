@@ -136,7 +136,7 @@
 </div>
 
 <script>
-// ===== ИМЕНА И ТЕКСТЫ =====
+
 const texts = {
         "Аня, ты очень милая и настоящая 🤍<br><br>С тобой легко и хорошо. Спасибо за тебя 💕"
 };
@@ -147,7 +147,7 @@ document.getElementById("name").innerText = "💗 " + name + " 💗";
 document.getElementById("personalText").innerHTML =
     texts[name] || "Ты очень важный человек для меня 💖<br><br>Спасибо, что ты есть 🌸";
 
-// ===== КНОПКИ =====
+
 function yesClick() {
     document.getElementById("question").style.display = "none";
     document.getElementById("buttons").style.display = "none";
@@ -162,5 +162,5 @@ function moveNo() {
     no.style.top = Math.random() * 80 + "%";
 }
 
-// ===== СЕРДЕЧКИ =====
+
 function burstHearts() {
