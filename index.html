@@ -1,16 +1,108 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Валентинка 💗</title>
-  <style>
-    body { text-align: center; font-family: Arial; background: pink; color: white; }
-    h1 { font-size: 3em; margin-top: 50px; }
-    p { font-size: 1.5em; }
-  </style>
+<meta charset="UTF-8">
+<title>Для тебя 💗</title>
+
+<style>
+body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#ffdde1,#ee9ca7);
+    font-family: Arial, sans-serif;
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    width:300px;
+}
+
+h1{
+    color:#e75480;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
+    position:relative;
+    margin:10px;
+}
+
+#yes{
+    background:#e75480;
+    color:white;
+}
+
+#no{
+    background:#ccc;
+}
+
+#hiddenMessage{
+    display:none;
+    margin-top:20px;
+    color:#444;
+}
+
+.petal{
+    position:absolute;
+    font-size:20px;
+    animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh); opacity:0;}
+    50%{opacity:1;}
+    100%{transform:translateY(110vh); opacity:0;}
+}
+</style>
+
 </head>
 <body>
-  <h1>Привет! 💖</h1>
-  <p>Это моя валентинка для тебя!</p>
+
+<div class="card">
+    <h1>Ты будешь моей валентинкой? 💗</h1>
+
+    <button id="yes" onclick="showLove()">ДА 💕</button>
+    <button id="no" onmouseover="runAway()">НЕТ 😅</button>
+
+    <div id="hiddenMessage">
+        Я зналааа 🥹💗  
+        Ты самая лучшая!
+    </div>
+</div>
+
+<script>
+function showLove(){
+    document.getElementById("hiddenMessage").style.display="block";
+}
+
+function runAway(){
+    let btn=document.getElementById("no");
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*80+"%";
+    btn.style.top=Math.random()*80+"%";
+}
+
+for(let i=0;i<20;i++){
+    let petal=document.createElement("div");
+    petal.className="petal";
+    petal.innerHTML="🌸";
+    petal.style.left=Math.random()*100+"vw";
+    petal.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(petal);
+}
+</script>
+
 </body>
 </html>
