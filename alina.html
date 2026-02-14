@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Для мамы 💖</title>
+<title>Для тебя 💗</title>
 
 <style>
 body {
@@ -11,7 +11,7 @@ body {
     display:flex;
     justify-content:center;
     align-items:center;
-    background: linear-gradient(135deg,#fff1eb,#ace0f9);
+    background: linear-gradient(135deg,#ffdde1,#ee9ca7);
     font-family: Arial, sans-serif;
     overflow:hidden;
 }
@@ -22,11 +22,11 @@ body {
     border-radius:25px;
     text-align:center;
     box-shadow:0 15px 30px rgba(0,0,0,0.2);
-    width:320px;
+    width:300px;
 }
 
 h1{
-    color:#ff6f91;
+    color:#e75480;
 }
 
 button{
@@ -40,7 +40,7 @@ button{
 }
 
 #yes{
-    background:#ff6f91;
+    background:#e75480;
     color:white;
 }
 
@@ -54,7 +54,7 @@ button{
     color:#444;
 }
 
-.heart{
+.petal{
     position:absolute;
     font-size:20px;
     animation:fall 6s linear infinite;
@@ -71,22 +71,14 @@ button{
 <body>
 
 <div class="card">
-    <h1>Мам, ты всегда будешь моим самым родным человеком 💗</h1>
+    <h1>Ты будешь моей валентинкой? 💗</h1>
 
-    <p>
-    Спасибо что ты меня терпишь, любишь.  
-    Я очень дорожу тобой.  
-    Иногда у нас бывают непонятки,  
-    но мы обязательно пройдём через это.  
-    Ты — мой дом. 💞
-    </p>
-
-    <button id="yes" onclick="showLove()">Я тебя люблю 💕</button>
-    <button id="no" onmouseover="runAway()">Нет 😅</button>
+    <button id="yes" onclick="showLove()">ДА 💕</button>
+    <button id="no" onmouseover="runAway()">НЕТ 😅</button>
 
     <div id="hiddenMessage">
-        Я зналааа 🥹  
-        Ты самая лучшая мама на свете.
+        Я зналааа 🥹💗  
+        Ты самая лучшая!
     </div>
 </div>
 
@@ -102,13 +94,13 @@ function runAway(){
     btn.style.top=Math.random()*80+"%";
 }
 
-for(let i=0;i<25;i++){
-    let heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💗";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDelay=Math.random()*5+"s";
-    document.body.appendChild(heart);
+for(let i=0;i<20;i++){
+    let petal=document.createElement("div");
+    petal.className="petal";
+    petal.innerHTML="🌸";
+    petal.style.left=Math.random()*100+"vw";
+    petal.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(petal);
 }
 </script>
 
