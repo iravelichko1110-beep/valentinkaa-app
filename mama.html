@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для мамы 💖</title>
+
+<style>
+body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#fff1eb,#ace0f9);
+    font-family: Arial, sans-serif;
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    width:320px;
+}
+
+h1{
+    color:#ff6f91;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
+    position:relative;
+    margin:10px;
+}
+
+#yes{
+    background:#ff6f91;
+    color:white;
+}
+
+#no{
+    background:#ccc;
+}
+
+#hiddenMessage{
+    display:none;
+    margin-top:20px;
+    color:#444;
+}
+
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh); opacity:0;}
+    50%{opacity:1;}
+    100%{transform:translateY(110vh); opacity:0;}
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <h1>Мам, ты всегда будешь моим самым родным человеком 💗</h1>
+
+    <p>
+    Спасибо что ты меня терпишь, любишь.  
+    Я очень дорожу тобой.  
+    Иногда у нас бывают непонятки,  
+    но мы обязательно пройдём через это.  
+    Ты — мой дом. 💞
+    </p>
+
+    <button id="yes" onclick="showLove()">Я тебя люблю 💕</button>
+    <button id="no" onmouseover="runAway()">Нет 😅</button>
+
+    <div id="hiddenMessage">
+        Я зналааа 🥹  
+        Ты самая лучшая мама на свете.
+    </div>
+</div>
+
+<script>
+function showLove(){
+    document.getElementById("hiddenMessage").style.display="block";
+}
+
+function runAway(){
+    let btn=document.getElementById("no");
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*80+"%";
+    btn.style.top=Math.random()*80+"%";
+}
+
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💗";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
