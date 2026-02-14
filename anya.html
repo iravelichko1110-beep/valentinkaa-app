@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Валентинка 💗</title>
+<title>Для Ани 💗</title>
 <style>
     body {
         margin: 0;
@@ -21,14 +21,12 @@
         border-radius: 25px;
         text-align: center;
         box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        max-width: 360px;
+        max-width: 340px;
         animation: fadeIn 1.5s ease;
-        z-index: 2;
     }
 
     h1 {
         color: #ff5c8a;
-        margin-bottom: 10px;
     }
 
     p {
@@ -40,7 +38,7 @@
     .buttons {
         margin-top: 25px;
         position: relative;
-        height: 70px;
+        height: 60px;
     }
 
     button {
@@ -56,50 +54,36 @@
     #yes {
         background: #ff5c8a;
         color: white;
-        left: 28%;
+        left: 30%;
     }
 
     #no {
         background: #ddd;
         color: #333;
-        right: 28%;
+        right: 30%;
     }
 
-    .message {
-        display: none;
-        animation: fadeIn 1s ease;
-    }
-
-    .signature {
-        margin-top: 15px;
-        font-style: italic;
-        color: #777;
+    button:hover {
+        transform: scale(1.05);
     }
 
     .heart {
         position: absolute;
         font-size: 18px;
-        pointer-events: none;
+        opacity: 0.7;
         animation: float 6s infinite ease-in;
-        opacity: 0.8;
-    }
-
-    .burst {
-        position: absolute;
-        font-size: 22px;
-        animation: burst 1.2s ease-out forwards;
-        pointer-events: none;
     }
 
     @keyframes float {
-        0% { transform: translateY(100vh); opacity: 0; }
+        0% {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
         50% { opacity: 1; }
-        100% { transform: translateY(-10vh); opacity: 0; }
-    }
-
-    @keyframes burst {
-        0% { transform: scale(0); opacity: 1; }
-        100% { transform: scale(2); opacity: 0; }
+        100% {
+            transform: translateY(-10vh);
+            opacity: 0;
+        }
     }
 
     @keyframes fadeIn {
@@ -110,57 +94,43 @@
 </head>
 <body>
 
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6c3f07e1b5.mp3" type="audio/mpeg">
-</audio>
-
 <div class="card">
-    <h1 id="name">💗</h1>
-
-    <p id="question">
+    <h1>💗 Соня 💗</h1>
+    <p>
         Хочешь быть моей валентинкой  
-        и самой любимой подругой? 🌸
+        и любимой подругой? 🌸
     </p>
 
-    <div class="buttons" id="buttons">
+    <div class="buttons">
         <button id="yes" onclick="yesClick()">ДА 💕</button>
         <button id="no" onmouseover="moveNo()">НЕТ 😅</button>
-    </div>
-
-    <div class="message" id="message">
-        <p id="personalText"></p>
-        <div class="signature">
-            С любовью, Ира 💻💗
-        </div>
     </div>
 </div>
 
 <script>
-
-const texts = {
-        "Аня, ты очень милая и настоящая 🤍<br><br>С тобой легко и хорошо. Спасибо за тебя 💕"
-};
-
-const params = new URLSearchParams(window.location.search);
-const name = params.get("name") || "Ты";
-document.getElementById("name").innerText = "💗 " + name + " 💗";
-document.getElementById("personalText").innerHTML =
-    texts[name] || "Ты очень важный человек для меня 💖<br><br>Спасибо, что ты есть 🌸";
-
-
 function yesClick() {
-    document.getElementById("question").style.display = "none";
-    document.getElementById("buttons").style.display = "none";
-    document.getElementById("message").style.display = "block";
-    document.getElementById("music").play();
-    burstHearts();
+    alert("УРААА 💖\nАня, ты невероятная!\nСпасибо, что ты у меня есть 🌸");
 }
 
 function moveNo() {
     const no = document.getElementById("no");
-    no.style.left = Math.random() * 80 + "%";
-    no.style.top = Math.random() * 80 + "%";
+    const x = Math.random() * 80;
+    const y = Math.random() * 80;
+    no.style.left = x + "%";
+    no.style.top = y + "%";
 }
 
+// сердечки
+for (let i = 0; i < 25; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDelay = Math.random() * 5 + "s";
+    heart.style.fontSize = (Math.random() * 20 + 14) + "px";
+    document.body.appendChild(heart);
+}
+</script>
 
-function burstHearts() {
+</body>
+</html>
